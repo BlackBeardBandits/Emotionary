@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Flower } from "../screens/Flower";
-import { Camera } from "../screens/camera/Camera.js";
+import { Camera } from "../screens/camera/Camera";
 import { Calendar } from "../screens/Calendar";
 const Tab = createBottomTabNavigator();
 
