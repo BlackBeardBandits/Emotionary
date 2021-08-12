@@ -5,12 +5,9 @@ import { LoginScreen } from "./screens/LoginScreen";
 
 const App = () => {
   return (
-    <>
-      <LoginScreen />
-      {/* <NavigationContainer>
-        <TabNavigation />
-      </NavigationContainer> */}
-    </>
+    <NavigationContainer>
+      <TabNavigation />
+    </NavigationContainer>
   );
 };
 
