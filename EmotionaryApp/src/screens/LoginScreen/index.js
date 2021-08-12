@@ -76,10 +76,10 @@ export const LoginScreen = () => {
       </FormArea>
       <ButtonArea>
         <LoginButton>
-          <LoginButtonText>Login</LoginButtonText>
+          <LoginButtonText>로그인</LoginButtonText>
         </LoginButton>
         <SignupButton>
-          <Text>signup</Text>
+          <Text>회원가입</Text>
         </SignupButton>
       </ButtonArea>
     </Container>
