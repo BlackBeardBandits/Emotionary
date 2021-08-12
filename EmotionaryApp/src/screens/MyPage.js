@@ -11,7 +11,7 @@ const StyledText = styled.Text`
   color: black;
 `;
 
-export const Mypage = () => {
+export const MyPage = () => {
   return (
     <Container>
       <StyledText>Mypage</StyledText>

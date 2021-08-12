@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Flower } from "../screens/Flower";
 import { Camera } from "../screens/Camera";
 import { Calendar } from "../screens/Calendar";
-import { Mypage } from "../screens/Mypage";
+import { MyPage } from "../screens/MyPage";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,7 @@ const TabNavigation = () => {
       <Tab.Screen name="Flower" component={Flower} />
       <Tab.Screen name="Camera" component={Camera} />
       <Tab.Screen name="Calendar" component={Calendar} />
-      <Tab.Screen name="Mypage" component={Mypage} />
+      <Tab.Screen name="MyPage" component={MyPage} />
     </Tab.Navigator>
   );
 };
