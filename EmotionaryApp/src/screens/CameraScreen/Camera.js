@@ -108,7 +108,7 @@ export const Camera = () => {
   useEffect(() => {
     if (newData != 0) {
       handleEmotionList(newData);
-      Alert.alert("분석 완료");
+      Alert.alert("분석  완료");
       spinner.stop();
     }
   }, [newData]);
