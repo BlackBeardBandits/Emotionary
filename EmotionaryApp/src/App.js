@@ -1,15 +1,31 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./navigations/Tab";
-import { LoginScreen } from "./screens/LoginScreen";
-import { MyPage } from "./screens/MypageScreen/MyPage";
+import { Login } from "./screens/Login/Login";
+import { Regist } from "./screens/Login/Regist";
+
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    // <LoginScreen />
-    // <MyPage />
     <NavigationContainer>
-      <TabNavigation />
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Regist"
+          component={Regist}
+          // options={{ headerShown: false }}
+        />
+      </Stack.Navigator>
+
+      {/* <TabNavigation /> */}
     </NavigationContainer>
   );
 };
