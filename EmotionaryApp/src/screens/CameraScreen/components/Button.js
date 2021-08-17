@@ -7,16 +7,16 @@ const Container = styled.TouchableOpacity`
   border-radius: 8px;
   padding: 0 10px;
   height: 35px;
-  width: 120px;
+  width: 130px;
   border: 2px solid;
   margin: 25px 5px;
 `;
 const Title = styled.Text`
   font-size: 16px;
 `;
-const Button = ({ title }) => {
+const Button = ({ title, onPress }) => {
   return (
-    <Container>
+    <Container onPress={onPress}>
       <Title>{title}</Title>
     </Container>
   );
