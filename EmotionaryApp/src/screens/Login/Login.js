@@ -2,6 +2,7 @@ import React, { useState, createRef } from "react";
 import styled from "styled-components";
 import { Text } from "react-native";
 import { Logo } from "./components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Container = styled.View`
   flex: 1;
@@ -71,6 +72,7 @@ export const Login = ({ navigation }) => {
   // }
 
   const handleLoginPress = () => {
+    setErrorText("");
     if (!userId) {
       setErrorText("이메일을 입력해주세요");
       return;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AsyncStorage } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Image } from "react-native";
 import styled from "styled-components";
 
@@ -30,7 +30,7 @@ export const Splash = ({ navigation }) => {
   return (
     <Container>
       <Image
-        source={require("../../images/emotionary.png")}
+        source={require("../images/emotionary.png")}
         style={{ width: "90%", resizeMode: "contain", margin: 30 }}
       />
       <ActivityIndicate animating={animating} color="black" size="large" />

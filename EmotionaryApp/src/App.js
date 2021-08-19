@@ -1,8 +1,8 @@
 import React from "react";
 import TabNavigation from "./navigations/Tab";
 import { Login } from "./screens/Login/Login";
-import { Regist } from "./screens/Login/Regist";
-import { Splash } from "./screens/Login/Splash";
+import { Regist } from "./screens/Regist/Regist";
+import { Splash } from "./screens/Splash";
 
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
