@@ -9,12 +9,13 @@ import { Alert } from "react-native";
 import { Analyze } from "./AWS/Analyze";
 const Container = styled.View`
   flex: 1;
-  padding: 30px 20px;
+  padding: 20px;
 `;
 const TitleText = styled.Text`
   font-size: 25px;
   font-weight: 500;
   color: black;
+  margin-top: 70px;
 `;
 
 const AdviceText = styled.Text`
@@ -34,8 +35,12 @@ const SelectImageBox = styled.View`
   margin-top: 20px;
   justify-content: space-between;
 `;
+const ActivityIndicate = styled.ActivityIndicator`
+  align-items: center;
+  height: 80px;
+`;
 export const Camera = () => {
-  const [photoUrl, setPhotoUrl] = useState(images.photo);
+  const [photoUrl, setPhotoUrl] = useState(images.test);
   const { spinner } = useContext(ProgressContext);
   const [list, setList] = useState([
     { emotion: "행복", percent: "0.0000" },
@@ -108,8 +113,8 @@ export const Camera = () => {
     if (newData != 0) {
       handleEmotionList(newData);
       Alert.alert("분석  완료");
-      spinner.stop();
     }
+    spinner.stop();
   }, [newData]);
 
   return (
