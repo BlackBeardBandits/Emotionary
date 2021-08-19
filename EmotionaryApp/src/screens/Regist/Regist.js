@@ -89,9 +89,8 @@ export const Regist = ({ navigation }) => {
       })
       .then((res) => {
         setLoading(false);
-        console.log(res.status.toString);
         if (res.status == 200) {
-          console.log(res);
+          console.log(res.data);
           setIsRegisterSuccess(true);
         }
       })

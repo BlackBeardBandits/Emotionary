@@ -21,7 +21,7 @@ export const Splash = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => {
       setAnimating(false);
-      AsyncStorage.getItem("user_id").then((value) =>
+      AsyncStorage.getItem("id").then((value) =>
         navigation.replace(value === null ? "Auth" : "TabNavigation")
       );
     }, 3000);
