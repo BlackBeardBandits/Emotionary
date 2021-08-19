@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import * as ImagePicker from "expo-image-picker";
 import { Platform, Alert } from "react-native";
@@ -38,8 +39,15 @@ const StyledModalText = styled.Text`
   color: black;
   font-size: 17px;
 `;
+
+const ModalButtonContainer = styled.TouchableOpacity`
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+`;
 const SelectImage = ({ url, onChangeImage }) => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [viewAlbum, setViewAlbum] = useState(false);
   useEffect(() => {
     (async () => {
       try {
@@ -58,9 +66,7 @@ const SelectImage = ({ url, onChangeImage }) => {
       }
     })();
   }, []);
-
   const _handleEditButton = async () => {
-    setModalVisible(false);
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -77,6 +83,14 @@ const SelectImage = ({ url, onChangeImage }) => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (viewAlbum === true) {
+        _handleEditButton();
+        setViewAlbum(false);
+      }
+    }, 1000);
+  }, [viewAlbum]);
   return (
     <Container>
       <Modal
@@ -84,33 +98,29 @@ const SelectImage = ({ url, onChangeImage }) => {
         useNativeDriver={true}
         hideModalContentWhileAnimating={true}
         animationType={"fade"}
-        style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}
       >
-        <StyledModalContainer>
-          <StyledModalButton onPress={_handleEditButton}>
-            <StyledModalText>앨범에서 선택</StyledModalText>
-          </StyledModalButton>
-        </StyledModalContainer>
+        <ModalButtonContainer onPress={() => setModalVisible(false)}>
+          <StyledModalContainer>
+            <StyledModalButton
+              onPress={() => {
+                setModalVisible(false);
+                setViewAlbum(true);
+              }}
+            >
+              <StyledModalText>앨범에서 선택</StyledModalText>
+            </StyledModalButton>
+          </StyledModalContainer>
 
-        <StyledModalContainer>
-          <StyledModalButton
-            onPress={() => {
-              setModalVisible(false);
-            }}
-          >
-            <StyledModalText>사진 찍기</StyledModalText>
-          </StyledModalButton>
-        </StyledModalContainer>
-
-        <StyledModalContainer>
-          <StyledModalButton
-            onPress={() => {
-              setModalVisible(false);
-            }}
-          >
-            <StyledModalText>닫기</StyledModalText>
-          </StyledModalButton>
-        </StyledModalContainer>
+          <StyledModalContainer>
+            <StyledModalButton
+              onPress={() => {
+                setModalVisible(false);
+              }}
+            >
+              <StyledModalText>닫기</StyledModalText>
+            </StyledModalButton>
+          </StyledModalContainer>
+        </ModalButtonContainer>
       </Modal>
       <ButtonContainer onPress={() => setModalVisible(true)}>
         <Image source={url}></Image>

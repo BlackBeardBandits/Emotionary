@@ -24,7 +24,7 @@ export const Splash = ({ navigation }) => {
       AsyncStorage.getItem("id").then((value) =>
         navigation.replace(value === null ? "Auth" : "Navigation")
       );
-    }, 3000);
+    }, 100); //3000
   }, []);
 
   return (
