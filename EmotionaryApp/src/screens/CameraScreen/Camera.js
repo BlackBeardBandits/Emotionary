@@ -7,7 +7,6 @@ import { handleFileInput } from "./AWS/UploadImageToAWS";
 import { ProgressContext } from "../../contexts";
 import { Alert } from "react-native";
 import { Analyze } from "./AWS/Analyze";
-
 const Container = styled.View`
   flex: 1;
   padding: 30px 20px;
@@ -127,12 +126,7 @@ export const Camera = () => {
         <AdviceText>사람들에게 당신의 웃는 모습을 보여주세요.</AdviceText>
         <EmojiImage></EmojiImage>
         <ButtonBox>
-          <Button
-            title="달력에 기록"
-            onPress={() => {
-              spinner.start();
-            }}
-          ></Button>
+          <Button title="달력에 기록" onPress={() => {}}></Button>
           <Button title="다른 감정 선택"></Button>
         </ButtonBox>
       </Container>
