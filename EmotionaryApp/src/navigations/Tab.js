@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Flower } from "../screens/Flower";
-import { Camera } from "../screens/camera/Camera";
+import { Camera } from "../screens/CameraScreen/Camera";
 import { Calendar } from "../screens/Calendar";
 import { MyPage } from "../screens/Mypage/MyPage";
 
@@ -26,5 +26,4 @@ const TabNavigation = () => {
     </Tab.Navigator>
   );
 };
-
 export default TabNavigation;
