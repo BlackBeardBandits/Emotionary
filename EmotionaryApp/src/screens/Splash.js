@@ -22,9 +22,9 @@ export const Splash = ({ navigation }) => {
     setTimeout(() => {
       setAnimating(false);
       AsyncStorage.getItem("id").then((value) =>
-        navigation.replace(value === null ? "Auth" : "TabNavigation")
+        navigation.replace(value === null ? "Auth" : "Navigation")
       );
-    }, 3000);
+    }, 1000); //3000
   }, []);
 
   return (
