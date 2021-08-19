@@ -35,6 +35,10 @@ const SelectImageBox = styled.View`
   margin-top: 20px;
   justify-content: space-between;
 `;
+const ActivityIndicate = styled.ActivityIndicator`
+  align-items: center;
+  height: 80px;
+`;
 export const Camera = () => {
   const [photoUrl, setPhotoUrl] = useState(images.test);
   const { spinner } = useContext(ProgressContext);
