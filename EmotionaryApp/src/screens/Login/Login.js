@@ -94,7 +94,7 @@ export const Login = ({ navigation }) => {
         if (res.status === 200) {
           console.log(res.data);
           AsyncStorage.setItem("id", res.data.id);
-          navigation.replace("TabNavigation");
+          navigation.replace("Navigation");
         }
       })
       .catch((err) => {
@@ -134,6 +134,9 @@ export const Login = ({ navigation }) => {
         </LoginButton>
         <RegistButton onPress={() => navigation.navigate("Regist")}>
           <Text>회원가입</Text>
+        </RegistButton>
+        <RegistButton onPress={() => navigation.replace("Navigation")}>
+          <Text>넘어가기</Text>
         </RegistButton>
       </ButtonArea>
     </Container>
