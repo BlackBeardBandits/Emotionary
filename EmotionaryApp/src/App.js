@@ -39,8 +39,8 @@ const App = () => {
   });
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Splash">
-        <ProgressProvider>
+      <ProgressProvider>
+        <Stack.Navigator initialRouteName="Splash">
           <Stack.Screen
             name="Splash"
             component={Splash}
@@ -56,8 +56,8 @@ const App = () => {
             component={Navigation}
             options={{ headerShown: false }}
           />
-        </ProgressProvider>
-      </Stack.Navigator>
+        </Stack.Navigator>
+      </ProgressProvider>
     </NavigationContainer>
   );
 };
