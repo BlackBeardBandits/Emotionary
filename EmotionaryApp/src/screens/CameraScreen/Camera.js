@@ -7,6 +7,7 @@ import { handleFileInput } from "./AWS/UploadImageToAWS";
 import { ProgressContext } from "../../contexts";
 import { Alert } from "react-native";
 import { Analyze } from "./AWS/Analyze";
+import { defaultEmotion } from "./defaultEmotion";
 const Container = styled.View`
   flex: 1;
   padding: 20px;
@@ -35,23 +36,10 @@ const SelectImageBox = styled.View`
   margin-top: 20px;
   justify-content: space-between;
 `;
-const ActivityIndicate = styled.ActivityIndicator`
-  align-items: center;
-  height: 80px;
-`;
 export const Camera = () => {
   const [photoUrl, setPhotoUrl] = useState(images.test);
   const { spinner } = useContext(ProgressContext);
-  const [list, setList] = useState([
-    { emotion: "행복", percent: "0.0000" },
-    { emotion: "두려움", percent: "0.0000" },
-    { emotion: "화남", percent: "0.0000" },
-    { emotion: "슬픔", percent: "0.0000" },
-    { emotion: "당황", percent: "0.0000" },
-    { emotion: "놀람", percent: "0.0000" },
-    { emotion: "침착", percent: "0.0000" },
-    { emotion: "역겨움", percent: "0.0000" },
-  ]);
+  const [list, setList] = useState(defaultEmotion.slice());
   const [newData, setNewData] = useState(0);
   const handleEmotionList = (data) => {
     var newList = [
@@ -64,34 +52,37 @@ export const Camera = () => {
       { emotion: "침착", percent: "0.0000" },
       { emotion: "역겨움", percent: "0.0000" },
     ];
-    data.Emotions.map((e) => {
-      switch (e.Type) {
-        case "HAPPY":
-          newList[0].percent = `${e.Confidence}`;
-          break;
-        case "FEAR":
-          newList[1].percent = `${e.Confidence}`;
-          break;
-        case "ANGRY":
-          newList[2].percent = `${e.Confidence}`;
-          break;
-        case "SAD":
-          newList[3].percent = `${e.Confidence}`;
-          break;
-        case "CONFUSED":
-          newList[4].percent = `${e.Confidence}`;
-          break;
-        case "SURPRISED":
-          newList[5].percent = `${e.Confidence}`;
-          break;
-        case "CALM":
-          newList[6].percent = `${e.Confidence}`;
-          break;
-        case "DISGUSTED":
-          newList[7].percent = `${e.Confidence}`;
-          break;
-      }
-    });
+    if (data !== "fail") {
+      data.Emotions.map((e) => {
+        switch (e.Type) {
+          case "HAPPY":
+            newList[0].percent = `${e.Confidence}`;
+            break;
+          case "FEAR":
+            newList[1].percent = `${e.Confidence}`;
+            break;
+          case "ANGRY":
+            newList[2].percent = `${e.Confidence}`;
+            break;
+          case "SAD":
+            newList[3].percent = `${e.Confidence}`;
+            break;
+          case "CONFUSED":
+            newList[4].percent = `${e.Confidence}`;
+            break;
+          case "SURPRISED":
+            newList[5].percent = `${e.Confidence}`;
+            break;
+          case "CALM":
+            newList[6].percent = `${e.Confidence}`;
+            break;
+          case "DISGUSTED":
+            newList[7].percent = `${e.Confidence}`;
+            break;
+        }
+      });
+    }
+
     setList(newList);
   };
 
@@ -101,18 +92,24 @@ export const Camera = () => {
       await handleFileInput(photoUrl);
       await Analyze(photoUrl, setNewData);
     } catch (e) {
-      Alert.alert("Error", e.message);
+      Alert.alert("분석 실패");
+      spinner.stop();
     }
   };
   useEffect(() => {
-    if (photoUrl !== images.photo) {
+    if (photoUrl !== images.test) {
       _handleFileInput();
     }
   }, [photoUrl]);
+
   useEffect(() => {
     if (newData != 0) {
       handleEmotionList(newData);
-      Alert.alert("분석  완료");
+      if (newData === "fail") {
+        Alert.alert("얼굴을 인식할 수 없습니다.");
+      } else {
+        Alert.alert("분석 완료");
+      }
     }
     spinner.stop();
   }, [newData]);
