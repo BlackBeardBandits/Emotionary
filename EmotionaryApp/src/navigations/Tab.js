@@ -11,12 +11,10 @@ const TabNavigation = () => {
   return (
     <Tab.Navigator
       initialRouteName="Camera"
-      tabBarOptions={{
-        inactiveTintColor: "#C1C1C1",
-        activeTintColor: "#000000",
-      }}
       screenOptions={{
         headerShown: false,
+        inactiveTintColor: "#C1C1C1",
+        activeTintColor: "#000000",
       }}
     >
       <Tab.Screen name="Flower" component={Flower} />
