@@ -7,6 +7,9 @@ import Modal from "react-native-modal";
 const Container = styled.View`
   height: 220px;
   width: 160px;
+  border-color: black;
+  border: 1px;
+  border-radius: 25px;
 `;
 const Image = styled.Image`
   width: 100%;

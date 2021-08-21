@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Flower } from "../screens/Flower";
 import { Camera } from "../screens/CameraScreen/Camera";
 import { Calendar } from "../screens/Calendar";
-import { MyPage } from "../screens/Mypage/MyPage";
+import { MyPage } from "../screens/MypageScreen/MyPage";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,12 +11,10 @@ const TabNavigation = () => {
   return (
     <Tab.Navigator
       initialRouteName="Camera"
-      tabBarOptions={{
-        inactiveTintColor: "#C1C1C1",
-        activeTintColor: "#000000",
-      }}
       screenOptions={{
         headerShown: false,
+        inactiveTintColor: "#C1C1C1",
+        activeTintColor: "#000000",
       }}
     >
       <Tab.Screen name="Flower" component={Flower} />
