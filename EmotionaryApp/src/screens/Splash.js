@@ -10,17 +10,9 @@ const Container = styled.View`
   background-color: white;
 `;
 
-const ActivityIndicate = styled.ActivityIndicator`
-  align-items: center;
-  height: 80px;
-`;
-
 export const Splash = ({ navigation }) => {
-  const [animating, setAnimating] = useState(true);
-
   useEffect(() => {
     setTimeout(() => {
-      setAnimating(false);
       AsyncStorage.getItem("id").then((value) =>
         navigation.replace(value === null ? "Auth" : "Navigation")
       );
@@ -33,7 +25,6 @@ export const Splash = ({ navigation }) => {
         source={require("../images/emotionary.png")}
         style={{ width: "90%", resizeMode: "contain", margin: 30 }}
       />
-      <ActivityIndicate animating={animating} color="black" size="large" />
     </Container>
   );
 };
