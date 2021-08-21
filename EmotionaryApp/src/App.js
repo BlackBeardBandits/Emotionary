@@ -1,7 +1,7 @@
 import React from "react";
 import TabNavigation from "./navigations/Tab";
-import { Login } from "./screens/Login/Login";
-import { Regist } from "./screens/Regist/Regist";
+import { Login } from "./screens/LoginScreen/Login";
+import { Regist } from "./screens/RegistScreen/Regist";
 import { Splash } from "./screens/Splash";
 
 import AWS from "aws-sdk";
