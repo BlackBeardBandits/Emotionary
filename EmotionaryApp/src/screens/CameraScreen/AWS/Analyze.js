@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import AWS from "aws-sdk";
+import { Alert } from "react-native";
 import { key } from "../../../../amplify/key";
+
 export const Analyze = (e, setNewData) => {
   const bucket = key.bucket; // the bucketname without s3://
   const client = new AWS.Rekognition();
@@ -16,10 +19,15 @@ export const Analyze = (e, setNewData) => {
     if (err) {
       console.log(err, err.stack); // an error occurred
     } else {
-      response.FaceDetails.forEach((data) => {
-        console.log("분석완료");
-        setNewData(data);
-      });
+      if (response.FaceDetails.length !== 0) {
+        response.FaceDetails.forEach((data) => {
+          console.log("분석완료");
+          setNewData(data);
+        });
+      } else {
+        setNewData("fail");
+        return;
+      }
     }
   });
 };
