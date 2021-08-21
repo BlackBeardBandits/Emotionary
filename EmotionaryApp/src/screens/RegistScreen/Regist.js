@@ -59,7 +59,6 @@ export const Regist = ({ navigation }) => {
   const [passwordCheck, setPasswordCheck] = useState("");
   const [name, setName] = useState("");
 
-  const [loading, setLoading] = useState(false);
   const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
 
   const passwordInputRef = createRef();
@@ -79,8 +78,6 @@ export const Regist = ({ navigation }) => {
       return;
     }
 
-    setLoading(true);
-
     axios
       .post(preURL + "/api/register", {
         name: name,
@@ -88,7 +85,6 @@ export const Regist = ({ navigation }) => {
         password: password,
       })
       .then((res) => {
-        setLoading(false);
         if (res.status == 200) {
           console.log(res.data);
           setIsRegisterSuccess(true);

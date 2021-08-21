@@ -11,7 +11,7 @@ const ResultEmotionLine = styled.View`
   flex-direction: row;
 `;
 const ResultEmotionText = styled.Text`
-  font-size: 20px;
+  font-size: 18px;
   margin: auto;
   font-weight: 400;
 `;

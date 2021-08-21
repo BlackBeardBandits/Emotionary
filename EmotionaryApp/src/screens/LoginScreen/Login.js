@@ -63,7 +63,6 @@ export const Login = ({ navigation }) => {
   const { preURL } = require("../../../preURL/preURL");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState("");
   const [errorText, setErrorText] = useState("");
 
   const passwordInputRef = createRef();

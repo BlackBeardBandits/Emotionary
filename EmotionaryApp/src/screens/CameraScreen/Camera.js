@@ -8,9 +8,11 @@ import { ProgressContext } from "../../contexts";
 import { Alert } from "react-native";
 import { Analyze } from "./AWS/Analyze";
 import { defaultEmotion } from "./defaultEmotion";
+
 const Container = styled.View`
   flex: 1;
   padding: 20px;
+  background-color: white;
 `;
 const TitleText = styled.Text`
   font-size: 25px;
@@ -22,6 +24,7 @@ const TitleText = styled.Text`
 const AdviceText = styled.Text`
   font-size: 20px;
   padding: 0 80px;
+  width: 100%;
   margin: 40px auto;
   text-align: center;
   font-weight: 600;
@@ -37,21 +40,15 @@ const SelectImageBox = styled.View`
   justify-content: space-between;
 `;
 export const Camera = () => {
-  const [photoUrl, setPhotoUrl] = useState(images.test);
+  //FIXME
+  // const myEmotion = [...defaultEmotion];
+  const [photoUrl, setPhotoUrl] = useState(images.camera);
   const { spinner } = useContext(ProgressContext);
-  const [list, setList] = useState(defaultEmotion.slice());
+  const [list, setList] = useState([...defaultEmotion]);
   const [newData, setNewData] = useState(0);
   const handleEmotionList = (data) => {
-    var newList = [
-      { emotion: "행복", percent: "0.0000" },
-      { emotion: "두려움", percent: "0.0000" },
-      { emotion: "화남", percent: "0.0000" },
-      { emotion: "슬픔", percent: "0.0000" },
-      { emotion: "당황", percent: "0.0000" },
-      { emotion: "놀람", percent: "0.0000" },
-      { emotion: "침착", percent: "0.0000" },
-      { emotion: "역겨움", percent: "0.0000" },
-    ];
+    const newList = [...defaultEmotion];
+
     if (data !== "fail") {
       data.Emotions.map((e) => {
         switch (e.Type) {
