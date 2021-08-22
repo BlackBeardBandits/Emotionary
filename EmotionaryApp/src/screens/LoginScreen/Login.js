@@ -135,7 +135,7 @@ export const Login = ({ navigation }) => {
           <Text>회원가입</Text>
         </RegistButton>
         <RegistButton onPress={() => navigation.replace("Navigation")}>
-          <Text>넘어가기</Text>
+          <Text>SKIP</Text>
         </RegistButton>
       </ButtonArea>
     </Container>
