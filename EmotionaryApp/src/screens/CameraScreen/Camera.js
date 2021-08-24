@@ -41,14 +41,22 @@ const SelectImageBox = styled.View`
 `;
 export const Camera = () => {
   //FIXME
-  // const myEmotion = [...defaultEmotion];
   const [photoUrl, setPhotoUrl] = useState(images.camera);
   const { spinner } = useContext(ProgressContext);
-  const [list, setList] = useState([...defaultEmotion]);
+  const [list, setList] = useState(defaultEmotion);
   const [newData, setNewData] = useState(0);
   const handleEmotionList = (data) => {
-    const newList = [...defaultEmotion];
-
+    const newList = [
+      { emotion: "행복", percent: "0.0000" },
+      { emotion: "두려움", percent: "0.0000" },
+      { emotion: "화남", percent: "0.0000" },
+      { emotion: "슬픔", percent: "0.0000" },
+      { emotion: "당황", percent: "0.0000" },
+      { emotion: "놀람", percent: "0.0000" },
+      { emotion: "침착", percent: "0.0000" },
+      { emotion: "역겨움", percent: "0.0000" },
+    ];
+    console.log(newList);
     if (data !== "fail") {
       data.Emotions.map((e) => {
         switch (e.Type) {
@@ -94,7 +102,7 @@ export const Camera = () => {
     }
   };
   useEffect(() => {
-    if (photoUrl !== images.test) {
+    if (photoUrl !== images.camera) {
       _handleFileInput();
     }
   }, [photoUrl]);
