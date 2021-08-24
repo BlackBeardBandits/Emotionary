@@ -106,7 +106,6 @@ export const Login = ({ navigation }) => {
   return (
     <Container>
       <Logo />
-
       <FormArea>
         <TextForm
           placeholder={"이메일"}
