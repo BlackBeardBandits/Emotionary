@@ -13,7 +13,7 @@ const TabNavigation = () => {
     <Tab.Navigator
       initialRouteName="Camera"
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
+        tabBarIcon: ({ focused }) => {
           let iconName;
           let opacity = focused ? 1 : 0.3;
           if (route.name === "Camera") {
