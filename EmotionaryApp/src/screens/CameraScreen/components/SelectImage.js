@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import * as ImagePicker from "expo-image-picker";
 import { Platform, Alert } from "react-native";

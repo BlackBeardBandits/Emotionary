@@ -1,7 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
-import { SelectImage, EmojiImage, Button, ResultEmotion } from "./components";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import {
+  SelectImage,
+  EmojiImage,
+  Button,
+  ResultEmotion,
+  SelectOtherEmotionModal,
+} from "./components";
 import { images } from "../../images";
 import { handleFileInput } from "./AWS/UploadImageToAWS";
 import { ProgressContext } from "../../contexts";
@@ -23,7 +28,7 @@ const TitleText = styled.Text`
 
 const AdviceText = styled.Text`
   font-size: 20px;
-  padding: 0 80px;
+  padding: 30px 80px 10px 80px;
   width: 100%;
   margin: 40px auto;
   text-align: center;
@@ -45,6 +50,8 @@ export const Camera = () => {
   const { spinner } = useContext(ProgressContext);
   const [list, setList] = useState(defaultEmotion);
   const [newData, setNewData] = useState(0);
+  const [isVisibleOtherEmoiton, setIsVisibleOtherEmoiton] = useState(false);
+  const [emotion, setEmotion] = useState(0); // 행복(0) 두려움 화남 슬픔 당황 놀람 침착 역겨움
   const handleEmotionList = (data) => {
     const newList = [
       { emotion: "행복", percent: "0.0000" },
@@ -130,10 +137,18 @@ export const Camera = () => {
         <ResultEmotion list={list}></ResultEmotion>
       </SelectImageBox>
       <AdviceText>사람들에게 당신의 웃는 모습을 보여주세요.</AdviceText>
-      <EmojiImage></EmojiImage>
+      <EmojiImage onPress={() => setIsVisibleOtherEmoiton(true)}></EmojiImage>
       <ButtonBox>
-        <Button title="달력에 기록" onPress={() => {}}></Button>
-        <Button title="다른 감정 선택"></Button>
+        <Button title="달력에 기록"></Button>
+        <Button
+          title="다른 감정 선택"
+          onPress={() => setIsVisibleOtherEmoiton(true)}
+        ></Button>
+        <SelectOtherEmotionModal
+          isVisibleOtherEmoiton={isVisibleOtherEmoiton}
+          setIsVisibleOtherEmoiton={setIsVisibleOtherEmoiton}
+          setEmotion={setEmotion}
+        />
       </ButtonBox>
     </Container>
   );
