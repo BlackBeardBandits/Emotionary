@@ -9,7 +9,7 @@ import { Alert } from "react-native";
 import { Analyze } from "./AWS/Analyze";
 import { defaultEmotion } from "./defaultEmotion";
 
-const Container = styled.View`
+const Container = styled.ScrollView`
   flex: 1;
   padding: 20px;
   background-color: white;
@@ -120,23 +120,21 @@ export const Camera = () => {
   }, [newData]);
 
   return (
-    <KeyboardAwareScrollView extraScrollHeight={20}>
-      <Container>
-        <TitleText>감정분석 결과</TitleText>
-        <SelectImageBox>
-          <SelectImage
-            url={photoUrl}
-            onChangeImage={(url) => setPhotoUrl(url)}
-          ></SelectImage>
-          <ResultEmotion list={list}></ResultEmotion>
-        </SelectImageBox>
-        <AdviceText>사람들에게 당신의 웃는 모습을 보여주세요.</AdviceText>
-        <EmojiImage></EmojiImage>
-        <ButtonBox>
-          <Button title="달력에 기록" onPress={() => {}}></Button>
-          <Button title="다른 감정 선택"></Button>
-        </ButtonBox>
-      </Container>
-    </KeyboardAwareScrollView>
+    <Container>
+      <TitleText>감정분석 결과</TitleText>
+      <SelectImageBox>
+        <SelectImage
+          url={photoUrl}
+          onChangeImage={(url) => setPhotoUrl(url)}
+        ></SelectImage>
+        <ResultEmotion list={list}></ResultEmotion>
+      </SelectImageBox>
+      <AdviceText>사람들에게 당신의 웃는 모습을 보여주세요.</AdviceText>
+      <EmojiImage></EmojiImage>
+      <ButtonBox>
+        <Button title="달력에 기록" onPress={() => {}}></Button>
+        <Button title="다른 감정 선택"></Button>
+      </ButtonBox>
+    </Container>
   );
 };
