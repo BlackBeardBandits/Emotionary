@@ -1,7 +1,6 @@
 import React, { useState, createRef } from "react";
 import styled from "styled-components";
 import { Text } from "react-native";
-import { Logo } from "./components";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
@@ -28,24 +27,18 @@ const TextForm = styled.TextInput`
   padding-right: 15px;
   margin-bottom: 15px;
 `;
-
-const ButtonArea = styled.View`
-  width: 80%;
-  height: 50px;
-`;
-
 const LoginButton = styled.TouchableOpacity`
   background-color: black;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 50px;
   border-radius: 25px;
   justify-content: center;
   align-items: center;
 `;
 
 const RegistButton = styled.TouchableOpacity`
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 50px;
   justify-content: center;
   align-items: center;
 `;
@@ -66,11 +59,6 @@ export const Login = ({ navigation }) => {
   const [errorText, setErrorText] = useState("");
 
   const passwordInputRef = createRef();
-
-  async function setUseridStorage(stu_id) {
-    await AsyncStorage.setItem("user_id", stu_id);
-    console.log("Done.");
-  }
 
   const handleLoginPress = () => {
     setErrorText("");
@@ -105,7 +93,6 @@ export const Login = ({ navigation }) => {
 
   return (
     <Container>
-      <Logo />
       <FormArea>
         <TextForm
           placeholder={"이메일"}
@@ -126,17 +113,12 @@ export const Login = ({ navigation }) => {
         />
       </FormArea>
       {errorText != "" ? <ErrorText> {errorText}</ErrorText> : null}
-      <ButtonArea>
-        <LoginButton onPress={handleLoginPress}>
-          <LoginButtonText>로그인</LoginButtonText>
-        </LoginButton>
-        <RegistButton onPress={() => navigation.navigate("Regist")}>
-          <Text>회원가입</Text>
-        </RegistButton>
-        <RegistButton onPress={() => navigation.replace("Navigation")}>
-          <Text>SKIP</Text>
-        </RegistButton>
-      </ButtonArea>
+      <LoginButton onPress={handleLoginPress}>
+        <LoginButtonText>로그인</LoginButtonText>
+      </LoginButton>
+      <RegistButton onPress={() => navigation.navigate("Regist")}>
+        <Text>회원가입</Text>
+      </RegistButton>
     </Container>
   );
 };
