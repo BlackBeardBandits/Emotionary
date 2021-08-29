@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>686912910264-9326ec0g23a1d8sblpug3t56pe2uqc40.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.686912910264-9326ec0g23a1d8sblpug3t56pe2uqc40</string>
+	<key>API_KEY</key>
+	<string>AIzaSyASaGED1mhjmzf5V_1rA7lCVGiTztyjToE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>686912910264</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.blackbeardbandits.emotionary</string>
+	<key>PROJECT_ID</key>
+	<string>emotionary-4df9c</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emotionary-4df9c.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:686912910264:ios:df1758f39c1c031de6d54d</string>
+</dict>
+</plist>
