@@ -51,7 +51,8 @@ export const Camera = () => {
   const [list, setList] = useState(defaultEmotion);
   const [newData, setNewData] = useState(0);
   const [isVisibleOtherEmoiton, setIsVisibleOtherEmoiton] = useState(false);
-  const [emotion, setEmotion] = useState(0); // 행복(0) 두려움 화남 슬픔 당황 놀람 침착 역겨움
+  const [emotion, setEmotion] = useState(8); // 행복(0) 두려움 화남 슬픔 당황 놀람 침착 역겨움 ?(8)
+
   const handleEmotionList = (data) => {
     const newList = [
       { emotion: "행복", percent: "0.0000" },
@@ -63,39 +64,73 @@ export const Camera = () => {
       { emotion: "침착", percent: "0.0000" },
       { emotion: "역겨움", percent: "0.0000" },
     ];
-    console.log(newList);
+    var highestEmotion = 8;
+    var highestPercent = 0;
     if (data !== "fail") {
       data.Emotions.map((e) => {
         switch (e.Type) {
           case "HAPPY":
             newList[0].percent = `${e.Confidence}`;
+            if (highestPercent < newList[0].percent) {
+              highestPercent = newList[0].percent;
+              highestEmotion = 0;
+            }
             break;
           case "FEAR":
             newList[1].percent = `${e.Confidence}`;
+            if (highestPercent < newList[1].percent) {
+              highestPercent = newList[1].percent;
+              highestEmotion = 1;
+            }
             break;
           case "ANGRY":
             newList[2].percent = `${e.Confidence}`;
+            if (highestPercent < newList[2].percent) {
+              highestPercent = newList[2].percent;
+              highestEmotion = 2;
+            }
             break;
           case "SAD":
             newList[3].percent = `${e.Confidence}`;
+            if (highestPercent < newList[3].percent) {
+              highestPercent = newList[3].percent;
+              highestEmotion = 3;
+            }
             break;
           case "CONFUSED":
             newList[4].percent = `${e.Confidence}`;
+            if (highestPercent < newList[4].percent) {
+              highestPercent = newList[4].percent;
+              highestEmotion = 4;
+            }
             break;
           case "SURPRISED":
             newList[5].percent = `${e.Confidence}`;
+            if (highestPercent < newList[5].percent) {
+              highestPercent = newList[5].percent;
+              highestEmotion = 5;
+            }
             break;
           case "CALM":
             newList[6].percent = `${e.Confidence}`;
+            if (highestPercent < newList[6].percent) {
+              highestPercent = newList[6].percent;
+              highestEmotion = 6;
+            }
             break;
           case "DISGUSTED":
             newList[7].percent = `${e.Confidence}`;
+            if (highestPercent < newList[7].percent) {
+              highestPercent = newList[7].percent;
+              highestEmotion = 7;
+            }
             break;
         }
       });
     }
 
     setList(newList);
+    setEmotion(highestEmotion);
   };
 
   const _handleFileInput = async () => {
@@ -137,7 +172,10 @@ export const Camera = () => {
         <ResultEmotion list={list}></ResultEmotion>
       </SelectImageBox>
       <AdviceText>사람들에게 당신의 웃는 모습을 보여주세요.</AdviceText>
-      <EmojiImage onPress={() => setIsVisibleOtherEmoiton(true)}></EmojiImage>
+      <EmojiImage
+        onPress={() => setIsVisibleOtherEmoiton(true)}
+        emotion={emotion}
+      ></EmojiImage>
       <ButtonBox>
         <Button title="달력에 기록"></Button>
         <Button

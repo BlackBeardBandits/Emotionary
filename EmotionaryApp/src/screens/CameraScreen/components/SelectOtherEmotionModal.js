@@ -50,6 +50,7 @@ const HorizentalLine = styled.View`
 const SelectOtherEmotionModal = ({
   isVisibleOtherEmoiton,
   setIsVisibleOtherEmoiton,
+  setEmotion,
 }) => {
   return (
     <Modal
@@ -64,6 +65,10 @@ const SelectOtherEmotionModal = ({
             <StyledModalContainer idx={idx} key={idx}>
               <StyledModalButton
                 onPress={() => {
+                  if (idx !== 8) {
+                    // 닫기가 아닐경우만
+                    setEmotion(idx);
+                  }
                   setIsVisibleOtherEmoiton(false);
                 }}
               >
