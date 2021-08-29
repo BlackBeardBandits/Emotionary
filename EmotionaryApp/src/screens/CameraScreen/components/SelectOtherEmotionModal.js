@@ -61,18 +61,16 @@ const SelectOtherEmotionModal = ({
       <ModalButtonContainer onPress={() => setIsVisibleOtherEmoiton(false)}>
         {Emotion.map((value, idx) => {
           return (
-            <>
-              <StyledModalContainer idx={idx}>
-                <StyledModalButton
-                  onPress={() => {
-                    setIsVisibleOtherEmoiton(false);
-                  }}
-                >
-                  <StyledModalText>{value}</StyledModalText>
-                </StyledModalButton>
-              </StyledModalContainer>
+            <StyledModalContainer idx={idx} key={idx}>
+              <StyledModalButton
+                onPress={() => {
+                  setIsVisibleOtherEmoiton(false);
+                }}
+              >
+                <StyledModalText>{value}</StyledModalText>
+              </StyledModalButton>
               <HorizentalLine idx={idx} />
-            </>
+            </StyledModalContainer>
           );
         })}
       </ModalButtonContainer>
