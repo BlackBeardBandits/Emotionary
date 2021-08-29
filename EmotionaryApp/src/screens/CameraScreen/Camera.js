@@ -37,7 +37,7 @@ const AdviceText = styled.Text`
 const ButtonBox = styled.View`
   flex: 1;
   flex-direction: row;
-  margin: auto;
+  margin: 0px auto 50px;
 `;
 const SelectImageBox = styled.View`
   flex-direction: row;

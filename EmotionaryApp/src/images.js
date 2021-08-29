@@ -15,6 +15,8 @@ import surprised from "./images/surprised.png";
 import calm from "./images/calm.png";
 import disgusted from "./images/disgusted.png";
 import question from "./images/question.png";
+
+import flower3 from "./images/3.png";
 export const images = {
   photo: photo,
   test: test,
@@ -33,4 +35,5 @@ export const images = {
   calm: calm,
   disgusted: disgusted,
   question: question,
+  flower3: flower3,
 };
