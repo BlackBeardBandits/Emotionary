@@ -61,14 +61,24 @@ LocaleConfig.locales["KO"] = {
   today: "Aujourd'hui",
 };
 LocaleConfig.defaultLocale = "KO";
-export const MyCalendar = () => {
+export const MyCalendar = (props) => {
   const [markedDates, setMarkedDates] = useState({});
+  const colorList = [
+    { emotion: "행복", color: "#9CFF8F" },
+    { emotion: "두려움", color: "black" },
+    { emotion: "화남", color: "#FF8B8B" },
+    { emotion: "슬픔", color: "blue" },
+    { emotion: "당황", color: "#897676" },
+    { emotion: "놀람", color: "#D6D637" },
+    { emotion: "침착", color: "#FFC28B" },
+    { emotion: "역겨움", color: "gray" },
+  ];
 
   function handleDayPress(day) {
     const selectedDate = {
       startingDay: true,
       endingDay: true,
-      color: "#9CFF8F",
+      color: colorList[2].color,
       selected: true,
       marked: false,
     };
