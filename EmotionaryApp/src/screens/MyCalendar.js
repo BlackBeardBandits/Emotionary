@@ -4,10 +4,9 @@ import styled from "styled-components";
 import { Calendar, CalendarList } from "react-native-calendars";
 import { LocaleConfig } from "react-native-calendars";
 import Arrow from "react-native-arrow";
-import { Dimensions } from "react-native";
+import { Dimensions, Button } from "react-native";
 import { Icon } from "react-native-elements";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { withNavigation } from "react-navigation";
 
 const chartWidth = Dimensions.get("window").width;
 
@@ -64,8 +63,8 @@ LocaleConfig.locales["KO"] = {
 };
 LocaleConfig.defaultLocale = "KO";
 export const MyCalendar = ({ route, navigation }) => {
-  const { emotion } = route.params;
-  console.log(emotion);
+  const { sendEmo } = route.params;
+  console.log(sendEmo);
   const [markedDates, setMarkedDates] = useState({});
   const colorList = [
     { emotion: "행복", color: "#9CFF8F" },
@@ -76,14 +75,14 @@ export const MyCalendar = ({ route, navigation }) => {
     { emotion: "놀람", color: "#D6D637" },
     { emotion: "침착", color: "#FFC28B" },
     { emotion: "역겨움", color: "gray" },
-    { emotion: "공백", color: "white" },
+    { emotion: "공백", color: "pink" },
   ];
 
   function handleDayPress(day) {
     const selectedDate = {
       startingDay: true,
       endingDay: true,
-      color: colorList[emotion].color,
+      color: colorList[sendEmo].color,
       selected: true,
       marked: false,
     };
@@ -160,6 +159,12 @@ export const MyCalendar = ({ route, navigation }) => {
         onPressArrowLeft={(substractMonth) => substractMonth()}
         onPressArrowRight={(addMonth) => addMonth()}
         style={{ width: chartWidth, height: "80%" }}
+      />
+      <Button
+        title="Back"
+        onPress={() => {
+          navigation.goBack();
+        }}
       />
     </Container>
   );

@@ -180,7 +180,7 @@ export const Camera = ({ navigation }) => {
         <Button
           title="달력에 기록"
           onPress={() =>
-            navigation.navigate("MyCalendar", { emotion: emotion })
+            navigation.navigate("MyCalendar", { sendEmo: emotion })
           }
         ></Button>
         <Button
