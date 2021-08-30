@@ -6,6 +6,8 @@ import { LocaleConfig } from "react-native-calendars";
 import Arrow from "react-native-arrow";
 import { Dimensions } from "react-native";
 import { Icon } from "react-native-elements";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const chartWidth = Dimensions.get("window").width;
 
@@ -61,7 +63,9 @@ LocaleConfig.locales["KO"] = {
   today: "Aujourd'hui",
 };
 LocaleConfig.defaultLocale = "KO";
-export const MyCalendar = (props) => {
+export const MyCalendar = ({ route, navigation }) => {
+  const { emotion } = route.params;
+  console.log(emotion);
   const [markedDates, setMarkedDates] = useState({});
   const colorList = [
     { emotion: "행복", color: "#9CFF8F" },
@@ -72,13 +76,14 @@ export const MyCalendar = (props) => {
     { emotion: "놀람", color: "#D6D637" },
     { emotion: "침착", color: "#FFC28B" },
     { emotion: "역겨움", color: "gray" },
+    { emotion: "공백", color: "white" },
   ];
 
   function handleDayPress(day) {
     const selectedDate = {
       startingDay: true,
       endingDay: true,
-      color: colorList[2].color,
+      color: colorList[emotion].color,
       selected: true,
       marked: false,
     };
