@@ -1,9 +1,13 @@
-import React from "react";
-import { View } from "react-native";
+import React, { useState } from "react";
+import { ScrollView, View } from "react-native";
 import styled from "styled-components";
-import { Calendar, CalendarList, Agenda } from "react-native-calendars";
+import { Calendar, CalendarList } from "react-native-calendars";
 import { LocaleConfig } from "react-native-calendars";
 import Arrow from "react-native-arrow";
+import { Dimensions } from "react-native";
+import { Icon } from "react-native-elements";
+
+const chartWidth = Dimensions.get("window").width;
 
 const Container = styled.View`
   flex: 1;
@@ -15,34 +19,34 @@ const StyledText = styled.Text`
   font-size: 30px;
   color: black;
 `;
-LocaleConfig.locales["fr"] = {
+LocaleConfig.locales["KO"] = {
   monthNames: [
-    "Janvier",
-    "Février",
-    "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juillet",
-    "Août",
-    "Septembre",
-    "Octobre",
-    "Novembre",
-    "Décembre",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ],
   monthNamesShort: [
-    "Janv.",
-    "Févr.",
+    "Jan",
+    "Feb",
     "Mars",
-    "Avril",
-    "Mai",
-    "Juin",
-    "Juil.",
-    "Août",
-    "Sept.",
-    "Oct.",
-    "Nov.",
-    "Déc.",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
   ],
   dayNames: [
     "일요일",
@@ -56,83 +60,91 @@ LocaleConfig.locales["fr"] = {
   dayNamesShort: ["일", "월", "화", "수", "목", "금", "토"],
   today: "Aujourd'hui",
 };
-LocaleConfig.defaultLocale = "fr";
+LocaleConfig.defaultLocale = "KO";
 export const MyCalendar = () => {
+  const [markedDates, setMarkedDates] = useState({});
+
+  function handleDayPress(day) {
+    const selectedDate = {
+      startingDay: true,
+      endingDay: true,
+      color: "#9CFF8F",
+      selected: true,
+      marked: false,
+    };
+    setMarkedDates({
+      [day.dateString]: selectedDate,
+    });
+  }
   return (
     <Container>
-      <Calendar
-        // Initially visible month. Default = Date()
-        current={new Date()}
-        // Minimum date that can be selected, dates before minDate will be grayed out. Default = undefined
-        minDate={"2010-01-01"}
-        // Maximum date that can be selected, dates after maxDate will be grayed out. Default = undefined
-        maxDate={"2030-12-31"}
-        // Handler which gets executed on day press. Default = undefined
-        onDayPress={(day) => {
-          console.log("selected day", day);
+      <CalendarList
+        scrollEnabled={true}
+        horizontal={true}
+        pagingEnabled={true}
+        markedDates={markedDates}
+        theme={{
+          backgroundColor: "#ffffff",
+          calendarBackground: "#ffffff",
+          textSectionTitleColor: "blue",
+          textSectionTitleDisabledColor: "#d9e1e8",
+          selectedDayBackgroundColor: "#00adf5",
+          selectedDayTextColor: "#ffffff",
+          todayTextColor: "#00adf5",
+          dayTextColor: "#2d4150",
+          textDisabledColor: "#d9e1e8",
+          dotColor: "#00adf5",
+          selectedDotColor: "#ffffff",
+          arrowColor: "orange",
+          disabledArrowColor: "#d9e1e8",
+          monthTextColor: "blue",
+          indicatorColor: "blue",
+          textDayFontWeight: "300",
+          textMonthFontWeight: "bold",
+          textDayHeaderFontWeight: "300",
+          textDayFontSize: 16,
+          textMonthFontSize: 16,
+          textDayHeaderFontSize: 16,
+
+          textDisabledColor: "gray",
+          calendarBackground: "white",
+          "stylesheet.day.period": {
+            base: {
+              overflow: "hidden",
+              height: 50,
+              alignItems: "center",
+              width: 50,
+            },
+          },
+          "stylesheet.calendar.header": {
+            week: {
+              marginTop: 0,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            },
+          },
+          selectedDayTextColor: "white",
         }}
-        // Handler which gets executed on day long press. Default = undefined
-        onDayLongPress={(day) => {
-          console.log("selected day", day);
-        }}
-        // Month format in calendar title. Formatting values: http://arshaw.com/xdate/#Formatting
-        monthFormat={"yyyy MM"}
-        // Handler which gets executed when visible month changes in calendar. Default = undefined
-        onMonthChange={(month) => {
-          console.log("month changed", month);
-        }}
-        // Hide month navigation arrows. Default = false
-        hideArrows={false}
-        // Replace default arrows with custom ones (direction can be 'left' or 'right')
         renderArrow={(direction) => (
-          <Arrow color={"black"} direction={direction} />
+          <Icon
+            name={direction === "left" ? "chevron-left" : "chevron-right"}
+            size={30}
+            color="black"
+          />
         )}
-        // Do not show days of other months in month page. Default = false
+        hideArrows={false}
+        markingType={"period"}
+        minDate={"2010-01-01"}
+        maxDate={"2070-12-31"}
+        onDayPress={handleDayPress}
+        onDayLongPress={(day) => {}}
+        monthFormat={"MMMM yyyy"}
+        onMonthChange={(month) => {}}
         hideExtraDays={false}
-        // If hideArrows=false and hideExtraDays=false do not switch month when tapping on greyed out
-        // day from another month that is visible in calendar page. Default = false
-        disableMonthChange={false}
-        // If firstDay=1 week starts from Monday. Note that dayNames and dayNamesShort should still start from Sunday.
         firstDay={1}
-        // Hide day names. Default = false
-        hideDayNames={false}
-        // Show week numbers to the left. Default = false
-        showWeekNumbers={false}
-        // Handler which gets executed when press arrow icon left. It receive a callback can go back month
         onPressArrowLeft={(substractMonth) => substractMonth()}
-        // Handler which gets executed when press arrow icon right. It receive a callback can go next month
         onPressArrowRight={(addMonth) => addMonth()}
-        // Disable left arrow. Default = false
-        disableArrowLeft={false}
-        // Disable right arrow. Default = false
-        disableArrowRight={false}
-        // Disable all touch events for disabled days. can be override with disableTouchEvent in markedDates
-        disableAllTouchEventsForDisabledDays={true}
-        /** Replace default month and year title with custom one. the function receive a date as parameter. */
-        //renderHeader={(date) => {/*Return JSX*/}}
-        style={{ height: "80%" }}
-        markedDates={{
-          "2021-08-29": {
-            selected: true,
-            marked: false,
-            selectedColor: "#FF8B8B",
-          },
-          "2021-08-28": {
-            selected: true,
-            marked: false,
-            selectedColor: "#8282FF",
-          },
-          "2021-08-27": {
-            selected: true,
-            marked: false,
-            selectedColor: "#FFC28B",
-          },
-          "2021-08-26": {
-            selected: true,
-            marked: false,
-            selectedColor: "#9CFF8F",
-          },
-        }}
+        style={{ width: chartWidth, height: "80%" }}
       />
     </Container>
   );
