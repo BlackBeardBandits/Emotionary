@@ -45,7 +45,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <ProgressProvider>
-        <Stack.Navigator initialRouteName="Splash">
+        <Stack.Navigator initialRouteName="Auth">
           <Stack.Screen
             name="Splash"
             component={Splash}
