@@ -14,10 +14,10 @@ export const MyPage = () => {
 
   useEffect(() => {
     AsyncStorage.getItem("name").then((value) => {
-      setName(value);
+      if (value != null) setName(value);
     });
     AsyncStorage.getItem("avata").then((value) => {
-      setAvataURL(value);
+      if (value != null) setAvataURL(value);
     });
   }, []);
 
