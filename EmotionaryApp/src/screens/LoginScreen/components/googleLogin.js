@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as GoogleSignIn from "expo-google-sign-in";
 import { Text } from "react-native";
 import styled from "styled-components";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Button = styled.TouchableOpacity`
   width: 80%;
@@ -13,7 +14,7 @@ const Button = styled.TouchableOpacity`
   margin-bottom: 10px;
 `;
 
-export const GoogleLogin = () => {
+export const GoogleLogin = ({ navigation }) => {
   const [user, setUser] = useState(null);
 
   const _syncUserWithStateAsync = async () => {
@@ -44,7 +45,11 @@ export const GoogleLogin = () => {
       await GoogleSignIn.askForPlayServicesAsync();
       const { type, user } = await GoogleSignIn.signInAsync();
       if (type === "success") {
-        this._syncUserWithStateAsync();
+        _syncUserWithStateAsync();
+        await AsyncStorage.setItem("id", user.email);
+        await AsyncStorage.setItem("name", user.displayName);
+        await AsyncStorage.setItem("avata", user.photoURL);
+        navigation.replace("Navigation");
       }
     } catch ({ message }) {
       alert("login: Error:" + message);
