@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView, View } from "react-native";
 import styled from "styled-components";
 import { Calendar, CalendarList } from "react-native-calendars";
@@ -64,7 +64,9 @@ LocaleConfig.locales["KO"] = {
 LocaleConfig.defaultLocale = "KO";
 export const MyCalendar = ({ route, navigation }) => {
   const { sendEmo } = route.params;
-  console.log(sendEmo);
+  // console.log(sendEmo);
+  var today = new Date().toISOString().slice(0, 10);
+  console.log(today);
   const [markedDates, setMarkedDates] = useState({});
   const colorList = [
     { emotion: "행복", color: "#9CFF8F" },
@@ -78,7 +80,7 @@ export const MyCalendar = ({ route, navigation }) => {
     { emotion: "공백", color: "pink" },
   ];
 
-  function handleDayPress(day) {
+  function handleDayPress() {
     const selectedDate = {
       startingDay: true,
       endingDay: true,
@@ -87,9 +89,24 @@ export const MyCalendar = ({ route, navigation }) => {
       marked: false,
     };
     setMarkedDates({
-      [day.dateString]: selectedDate,
+      [today]: selectedDate,
     });
   }
+
+  useEffect(() => {
+    handleDayPress();
+  }, [sendEmo]);
+
+  // setMarkedDates({
+  //   [today]: {
+  //     startingDay: true,
+  //     endingDay: true,
+  //     color: colorList[sendEmo].color,
+  //     selected: true,
+  //     marked: false,
+  //   },
+  // });
+
   return (
     <Container>
       <CalendarList
@@ -150,7 +167,7 @@ export const MyCalendar = ({ route, navigation }) => {
         markingType={"period"}
         minDate={"2010-01-01"}
         maxDate={"2070-12-31"}
-        onDayPress={handleDayPress}
+        // onDayPress={(day) => handleDayPress(day)}
         onDayLongPress={(day) => {}}
         monthFormat={"MMMM yyyy"}
         onMonthChange={(month) => {}}
