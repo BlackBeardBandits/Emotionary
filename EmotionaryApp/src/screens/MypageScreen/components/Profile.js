@@ -50,7 +50,7 @@ export const Profile = ({ name, level, achievedGoal, avataURL }) => {
           <ProfileDescription>달성한 목표 {achievedGoal}개</ProfileDescription>
         </ProfileGrid>
         <ProfileGrid>
-          <Avata source={require("../../../images/Unknown_person.jpg")}></Avata>
+          <Avata source={avataURL}></Avata>
         </ProfileGrid>
       </ProfileContainer>
     </ProfileCard>

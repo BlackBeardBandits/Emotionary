@@ -1,2 +1,3 @@
 import { Logo } from "./Logo";
-export { Logo };
+import { GoogleLogin } from "./googleLogin";
+export { Logo, GoogleLogin };

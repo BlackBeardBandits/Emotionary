@@ -13,13 +13,20 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.blackbeardbandits.emotionary",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.686912910264-9326ec0g23a1d8sblpug3t56pe2uqc40"
+        }
+      },
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.blackbeardbandits.emotionary",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

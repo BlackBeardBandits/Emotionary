@@ -2,6 +2,7 @@ import React from "react";
 import { Text } from "react-native";
 import { Logo } from "./components";
 import styled from "styled-components";
+import { GoogleLogin } from "./components";
 
 const Container = styled.View`
   flex: 1;
@@ -33,9 +34,7 @@ export const LoginSelect = ({ navigation }) => {
       <Button onPress={() => navigation.navigate("Login")}>
         <Text>Emotionary 계정으로 로그인</Text>
       </Button>
-      <Button>
-        <Text>구글 계정으로 로그인</Text>
-      </Button>
+      <GoogleLogin navigation={navigation} />
       <SkipButton onPress={() => navigation.replace("Navigation")}>
         <Text>SKIP</Text>
       </SkipButton>
