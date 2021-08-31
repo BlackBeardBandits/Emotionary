@@ -15,6 +15,11 @@ const ResultEmotionText = styled.Text`
   margin: auto;
   font-weight: 400;
 `;
+const ResultPercentText = styled.Text`
+  font-size: 18px;
+  margin: auto 10px;
+  font-weight: 400;
+`;
 const ResultEmotion = (list) => {
   return (
     <Container>
@@ -22,9 +27,9 @@ const ResultEmotion = (list) => {
         return (
           <ResultEmotionLine key={idx}>
             <ResultEmotionText>{text["emotion"]}</ResultEmotionText>
-            <ResultEmotionText>
+            <ResultPercentText styled={{ margin: 20 }}>
               {text["percent"].substring(0, 7)}
-            </ResultEmotionText>
+            </ResultPercentText>
           </ResultEmotionLine>
         );
       })}

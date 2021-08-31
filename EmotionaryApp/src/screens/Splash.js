@@ -11,6 +11,9 @@ const Container = styled.View`
 `;
 
 export const Splash = ({ navigation }) => {
+  //TODO - AsyncStorage.clear() : 테스트 시에 로컬스토리지 비워두기
+  // AsyncStorage.clear();
+
   useEffect(() => {
     setTimeout(() => {
       AsyncStorage.getItem("id").then((value) =>

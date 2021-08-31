@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "686912910264",
+    "project_id": "emotionary-4df9c",
+    "storage_bucket": "emotionary-4df9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686912910264:android:e8d0621c6623d4abe6d54d",
+        "android_client_info": {
+          "package_name": "com.blackbeardbandits.emotionary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686912910264-np2elkf3jmrcr0e0nog4563ad84f72cb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpRy3eHBx5dfc0_v7YP7VnR1IuOUyFt58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686912910264-np2elkf3jmrcr0e0nog4563ad84f72cb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "686912910264-9326ec0g23a1d8sblpug3t56pe2uqc40.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.blackbeardbandits.emotionary"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { LoginSelect } from "./screens/LoginScreen/LoginSelect";
 import { Login } from "./screens/LoginScreen/Login";
 import { Regist } from "./screens/RegistScreen/Regist";
 import { Splash } from "./screens/Splash";
@@ -16,7 +17,12 @@ const Stack = createStackNavigator();
 
 const Auth = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="LoginSelect">
+      <Stack.Screen
+        name="LoginSelect"
+        component={LoginSelect}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -39,7 +45,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <ProgressProvider>
-        <Stack.Navigator initialRouteName="Splash">
+        <Stack.Navigator initialRouteName="Auth">
           <Stack.Screen
             name="Splash"
             component={Splash}

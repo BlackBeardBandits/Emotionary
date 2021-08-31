@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import * as ImagePicker from "expo-image-picker";
 import { Platform, Alert } from "react-native";
@@ -14,6 +13,7 @@ const Container = styled.View`
 const Image = styled.Image`
   width: 100%;
   height: 100%;
+  border-radius: 25px;
 `;
 const ButtonContainer = styled.TouchableOpacity`
   width: 100%;
