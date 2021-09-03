@@ -1,6 +1,7 @@
 import photo from "./images/photo.png";
 import test from "./images/test.png";
 import camera from "./images/camera.png";
+import unknown from "./images/Unknown_person.jpg";
 import calendar from "./images/calendar.png";
 import gallery from "./images/gallery.png";
 import plant from "./images/plant.png";
@@ -25,6 +26,7 @@ export const images = {
   photo: photo,
   test: test,
   camera: camera,
+  unknown: unknown,
   calendar: calendar,
   gallery: gallery,
   plant: plant,
