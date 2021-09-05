@@ -12,6 +12,7 @@ import { key } from "../amplify/key";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { MyCalendar } from "./screens/MyCalendar";
 
 const Stack = createStackNavigator();
 
@@ -59,6 +60,11 @@ const App = () => {
           <Stack.Screen
             name="Navigation"
             component={Navigation}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MyCalendar"
+            component={MyCalendar}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

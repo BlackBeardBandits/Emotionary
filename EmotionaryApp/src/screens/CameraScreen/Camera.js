@@ -44,7 +44,7 @@ const SelectImageBox = styled.View`
   margin-top: 20px;
   justify-content: space-between;
 `;
-export const Camera = () => {
+export const Camera = ({ navigation }) => {
   //FIXME
   const [photoUrl, setPhotoUrl] = useState(images.camera);
   const { spinner } = useContext(ProgressContext);
@@ -177,7 +177,12 @@ export const Camera = () => {
         emotion={emotion}
       ></EmojiImage>
       <ButtonBox>
-        <Button title="달력에 기록"></Button>
+        <Button
+          title="달력에 기록"
+          onPress={() =>
+            navigation.navigate("MyCalendar", { sendEmo: emotion })
+          }
+        ></Button>
         <Button
           title="다른 감정 선택"
           onPress={() => setIsVisibleOtherEmoiton(true)}
