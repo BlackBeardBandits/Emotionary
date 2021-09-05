@@ -63,11 +63,19 @@ LocaleConfig.locales["KO"] = {
 };
 LocaleConfig.defaultLocale = "KO";
 export const MyCalendar = ({ route, navigation }) => {
-  const { sendEmo } = route.params;
+  // var { sendEmo } = { sendEmo: 8 };
   // console.log(sendEmo);
+  //
+  var { sendEmo } = { sendEmo: 8 };
+  console.log(sendEmo);
+  if (route.params != null) {
+    sendEmo = route.params.sendEmo;
+  }
+  console.log("??" + sendEmo);
   var today = new Date().toISOString().slice(0, 10);
   console.log(today);
   const [markedDates, setMarkedDates] = useState({});
+
   const colorList = [
     { emotion: "행복", color: "#9CFF8F" },
     { emotion: "두려움", color: "black" },
@@ -77,7 +85,7 @@ export const MyCalendar = ({ route, navigation }) => {
     { emotion: "놀람", color: "#D6D637" },
     { emotion: "침착", color: "#FFC28B" },
     { emotion: "역겨움", color: "gray" },
-    { emotion: "공백", color: "pink" },
+    { emotion: "공백", color: "#BDBDBD" },
   ];
 
   function handleDayPress() {
