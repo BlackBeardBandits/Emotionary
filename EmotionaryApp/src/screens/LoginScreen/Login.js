@@ -81,6 +81,7 @@ export const Login = ({ navigation }) => {
         if (res.status === 200) {
           console.log(res.data);
           AsyncStorage.setItem("id", res.data.id);
+          AsyncStorage.setItem("name", res.data.name);
           navigation.replace("Navigation");
         }
       })
