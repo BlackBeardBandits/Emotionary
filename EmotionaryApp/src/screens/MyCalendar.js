@@ -7,6 +7,7 @@ import Arrow from "react-native-arrow";
 import { Dimensions, Button } from "react-native";
 import { Icon } from "react-native-elements";
 import { withNavigation } from "react-navigation";
+import { navItem } from "aws-amplify";
 
 const chartWidth = Dimensions.get("window").width;
 
@@ -19,6 +20,29 @@ const Container = styled.View`
 const StyledText = styled.Text`
   font-size: 30px;
   color: black;
+`;
+const EmotionList = styled.View`
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
+const EmotionBox = styled.View`
+  height: 70px;
+  width: 70px;
+  align-items: center;
+  margin: 10px 20px;
+`;
+const RoundColor = styled.View`
+  background-color: ${({ color }) => color};
+  border-radius: 50px;
+  height: 60%;
+  width: 60%;
+`;
+const Colortext = styled.Text`
+  font-size: 15px;
+  padding: 5px;
+  font-weight: 500;
 `;
 LocaleConfig.locales["KO"] = {
   monthNames: [
@@ -183,14 +207,25 @@ export const MyCalendar = ({ route, navigation }) => {
         firstDay={1}
         onPressArrowLeft={(substractMonth) => substractMonth()}
         onPressArrowRight={(addMonth) => addMonth()}
-        style={{ width: chartWidth, height: "80%" }}
+        style={{ width: chartWidth, height: "60%" }}
       />
-      <Button
+      <EmotionList>
+        {colorList.map((item) => {
+          return (
+            <EmotionBox>
+              {console.log(item.color)}
+              <RoundColor color={item.color}></RoundColor>
+              <Colortext>{item.emotion}</Colortext>
+            </EmotionBox>
+          );
+        })}
+      </EmotionList>
+      {/* <Button
         title="Back"
         onPress={() => {
           navigation.goBack();
         }}
-      />
+      /> */}
     </Container>
   );
 };
