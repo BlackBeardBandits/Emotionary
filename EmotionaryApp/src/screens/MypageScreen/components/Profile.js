@@ -46,8 +46,8 @@ export const Profile = ({ name, level, achievedGoal, avataURL }) => {
       <ProfileContainer>
         <ProfileGrid>
           <ProfileName>{name}</ProfileName>
-          <ProfileDescription>Lv. {level}</ProfileDescription>
-          <ProfileDescription>달성한 목표 {achievedGoal}개</ProfileDescription>
+          {/* <ProfileDescription>Lv. {level}</ProfileDescription>
+          <ProfileDescription>달성한 목표 {achievedGoal}개</ProfileDescription> */}
         </ProfileGrid>
         <ProfileGrid>
           <Avata source={avataURL}></Avata>

@@ -77,9 +77,7 @@ export const Login = ({ navigation }) => {
         password: password,
       })
       .then((res) => {
-        console.log(res.status.toString);
         if (res.status === 200) {
-          console.log(res.data);
           AsyncStorage.setItem("id", res.data.id);
           AsyncStorage.setItem("name", res.data.name);
           navigation.replace("Navigation");

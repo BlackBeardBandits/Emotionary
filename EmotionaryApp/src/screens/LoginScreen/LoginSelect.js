@@ -34,7 +34,7 @@ export const LoginSelect = ({ navigation }) => {
       <Button onPress={() => navigation.navigate("Login")}>
         <Text>Emotionary 계정으로 로그인</Text>
       </Button>
-      <GoogleLogin navigation={navigation} />
+      {/* <GoogleLogin navigation={navigation} /> */}
       <SkipButton onPress={() => navigation.replace("Navigation")}>
         <Text>SKIP</Text>
       </SkipButton>
