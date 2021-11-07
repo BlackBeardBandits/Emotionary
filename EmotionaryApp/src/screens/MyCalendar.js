@@ -8,6 +8,7 @@ import { Dimensions, Button } from "react-native";
 import { Icon } from "react-native-elements";
 import { withNavigation } from "react-navigation";
 import { navItem } from "aws-amplify";
+import { AsyncStorage, JS } from "@aws-amplify/core";
 
 const chartWidth = Dimensions.get("window").width;
 
@@ -86,6 +87,7 @@ LocaleConfig.locales["KO"] = {
     today: "Aujourd'hui",
 };
 LocaleConfig.defaultLocale = "KO";
+
 export const MyCalendar = ({ route, navigation }) => {
     // var { sendEmo } = { sendEmo: 8 };
     // console.log(sendEmo);
@@ -96,7 +98,7 @@ export const MyCalendar = ({ route, navigation }) => {
     }
     var today = new Date().toISOString().slice(0, 10);
     const [markedDates, setMarkedDates] = useState({});
-
+    let userInfo = { today: 8 };
     const colorList = [
         { emotion: "행복", color: "#9CFF8F" },
         { emotion: "두려움", color: "black" },
@@ -108,33 +110,37 @@ export const MyCalendar = ({ route, navigation }) => {
         { emotion: "역겨움", color: "gray" },
         { emotion: "공백", color: "#BDBDBD" },
     ];
-
-    function handleDayPress() {
-        const selectedDate = {
-            startingDay: true,
-            endingDay: true,
-            color: colorList[sendEmo].color,
-            selected: true,
-            marked: false,
-        };
-        setMarkedDates({
-            [today]: selectedDate,
+    async function getUserInfo() {
+        await AsyncStorage.getItem("userInfo", (err, result) => {
+            if (result != null) {
+                userInfo = JSON.parse(result);
+            }
         });
+
+        handleDayPress();
+    }
+    function handleDayPress() {
+        let myDatas = {};
+        for (let date in userInfo) {
+            const val = userInfo[date];
+            const selectedDate = {
+                startingDay: true,
+                endingDay: true,
+                color: colorList[val].color,
+                selected: true,
+                marked: false,
+            };
+            myDatas[date] = selectedDate;
+        }
+        setMarkedDates(myDatas);
     }
 
     useEffect(() => {
-        handleDayPress();
+        getUserInfo();
+    }, []);
+    useEffect(() => {
+        getUserInfo();
     }, [sendEmo]);
-
-    // setMarkedDates({
-    //   [today]: {
-    //     startingDay: true,
-    //     endingDay: true,
-    //     color: colorList[sendEmo].color,
-    //     selected: true,
-    //     marked: false,
-    //   },
-    // });
 
     return (
         <Container>
