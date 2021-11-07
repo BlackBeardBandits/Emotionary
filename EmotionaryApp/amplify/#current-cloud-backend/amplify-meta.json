@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-emotionaryapp-dev-31457-authRole",
+      "UnauthRoleArn": "arn:aws:iam::132078756284:role/amplify-emotionaryapp-dev-31457-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::132078756284:role/amplify-emotionaryapp-dev-31457-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-emotionaryapp-dev-31457-deployment",
+      "UnauthRoleName": "amplify-emotionaryapp-dev-31457-unauthRole",
+      "StackName": "amplify-emotionaryapp-dev-31457",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:132078756284:stack/amplify-emotionaryapp-dev-31457/8cb5fc50-fd2b-11eb-a159-02a200717f74",
+      "AmplifyAppId": "d3swrbaw4i7m6a"
+    }
+  }
+}
