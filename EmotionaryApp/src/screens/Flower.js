@@ -90,6 +90,7 @@ const changeImage = (days) => {
             image = images.rose4;
             break;
         case 4:
+        case 5:
             image = images.rose5;
             break;
         default:
@@ -98,15 +99,32 @@ const changeImage = (days) => {
 };
 var image;
 export const Flower = () => {
-    let [days, setDays] = useState(0);
-    setInterval(() => {
-        getUserInfo(days, setDays);
-    }, 2000);
-    changeImage(days);
-    useEffect(() => {
-        changeImage(days);
-    }, [days]);
-
+    // let [days, setDays] = useState(0);
+    // setInterval(() => {
+    //     getUserInfo(days, setDays);
+    // }, 2000);
+    let days = 5;
+    // changeImage(days);
+    // useEffect(() => {
+    //     changeImage(days);
+    // }, [days]);
+    switch (days) {
+        case 1:
+            image = images.rose2;
+            break;
+        case 2:
+            image = images.rose3;
+            break;
+        case 3:
+            image = images.rose4;
+            break;
+        case 4:
+        case 5:
+            image = images.rose5;
+            break;
+        default:
+            image = images.rose1;
+    }
     return (
         <Container>
             <TextBox>

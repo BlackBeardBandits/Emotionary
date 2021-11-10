@@ -192,8 +192,10 @@ export const Camera = ({ navigation }) => {
                                         // "2021-11-01": 6,
                                         // "2021-11-05": 5,
                                         // "2021-11-06": 1,
-                                        // "2021-11-07": 3,
+                                        "2021-11-07": 2,
                                         // "2021-11-08": 1,
+                                        "2021-11-09": 6,
+                                        "2021-11-10": 3,
                                     };
                                 }
                                 let today = new Date();
@@ -212,6 +214,7 @@ export const Camera = ({ navigation }) => {
                 <Button
                     title="다른 감정 선택"
                     onPress={() => {
+                        // AsyncStorage.clear();
                         setIsVisibleOtherEmoiton(true);
                     }}
                 ></Button>
